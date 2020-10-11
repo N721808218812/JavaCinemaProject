@@ -1,14 +1,19 @@
+<%-- 
+    Document   : AllPost
+    Created on : Aug 8, 2015, 10:44:55 PM
+    Author     : Thang
+--%>
+
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-    <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Add Sala</title>
+    <title>Sve sale</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -32,9 +37,9 @@ and open the template in the editor.
 
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-</head>
+    </head>
     <body>
-        <!-- header-start -->
+       <!-- header-start -->
     <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area">
@@ -92,21 +97,39 @@ and open the template in the editor.
         </div>
     </header>
     <!-- header-end -->
-
-    <h1><center>Dodaj novu salu</center></h1>
-        <div style="width: 900px; margin-left: auto; margin-right: auto">
-            <form action="JSP/ManagerAddNew.jsp" method="post">
-                <center>Naziv:</center><br>
-                <center><input type="text" name="naziv" style="width: 200px"></center><br>
-                <center>Broj redova:</center><br>
-                <center><input type="text" name="brojRedova" style="width: 200px"></center><br>
-                <center>Broj sedista:</center><br>
-                <center><input type="text" name="brojSedista" style="width: 200px"></center><br>
-                <center> <input type="submit" value="Submit"></center>
-            </form>
-            <!--Complete Interface Addnew.-->
+            <img src="images/cinemaseats2.jpg" align="center">
+    <!-- header-end -->
+        <div style="width: 1200px; margin-left: auto; margin-right: auto;">
+            <table cellpadding="10" align="center">
+                <tr align="center">
+                    <th >Id</th>
+                    <th>Naziv</th>
+                    <th>Broj Redova</th>
+                    <th>Broj Sedista</th>
+                    <th></th>
+                </tr>
+                <c:forEach items="${AllPost}" var="p">
+                    <tr>
+                        <td align="center">${p.id}</td>
+                        <td>${p.naziv}</td>
+                        <td>${p.brojRedova}</td>
+                        <td>${p.brojSedista}</td>
+                        <td>
+                            <a href="edit?id=${p.id}">Edit</a>
+                            <a href="delete?id=${p.id}">Delete</a>
+                        </td>
+                    </tr>
+                    <br>
+                </c:forEach>
+            </table>
+                                <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
-    <!-- link that opens popup -->
+        <!-- link that opens popup -->
 <!--     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>

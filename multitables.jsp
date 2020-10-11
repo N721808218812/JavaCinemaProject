@@ -1,14 +1,33 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+
+<%
+String id = request.getParameter("userId");
+String driverName = "com.mysql.jdbc.Driver";
+String connectionUrl = "jdbc:mysql://localhost:3306/";
+String dbName = "login";
+String userId = "root";
+String password = "";
+
+try {
+Class.forName(driverName);
+} catch (ClassNotFoundException e) {
+e.printStackTrace();
+}
+
+Connection connection = null;
+Statement statement = null;
+ResultSet resultSet = null;
+%>
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Add Sala</title>
+    <title>Cinema</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -33,8 +52,8 @@ and open the template in the editor.
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
-    <body>
-        <!-- header-start -->
+<body>
+      <!-- header-start -->
     <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area">
@@ -52,13 +71,22 @@ and open the template in the editor.
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a class="active" href="index.jsp">Pocetna</a></li>
-                                            <li><a href="AddNew.html">Sale<i class="ti-angle-down"></i></a>
+                                            <li><a class="active" href="all.jsp">Pocetna</a></li>
+                                            <li><a href="about.html">O nama</a></li>
+                                            <li><a class="" href="travel_destination.html">Repertoar</a></l/li>
+                                            <li><a href="#">Bioskop <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="AddNew.html">Unesite novu salu</a></li>
-                                                    <li><a href="AllPost">Pregled svih sala</a></li>
+                                                        <li><a href="movies.jsp">Filmovi</a></li>
+                                                        <li><a href="multitables.jsp">Postanite clan kluba</a></li>
                                                 </ul>
                                             </li>
+                                            <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="blog.html">blog</a></li>
+                                                    <li><a href="single-blog.html">single-blog</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Kontakt</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -92,20 +120,57 @@ and open the template in the editor.
         </div>
     </header>
     <!-- header-end -->
+<%
+try{ 
+connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
+statement=connection.createStatement();
+String sql ="SELECT * from user order by id desc limit 1 ";
+resultSet = statement.executeQuery(sql);
+//"SELECT b.cinemaname,b.capacity,s.brojRedova,s.id from sala s join bioskop b on (s.bioskop_id=b.id)"
+while(resultSet.next()){
+%>
+<form action="Club" method="post">
+    <center><h1>Postanite clan kluba i osvojite popuste!</h1></center><br><br>
+<img src="images/ticket3.png">
+<input type="hidden" name="id" value="<%=resultSet.getString("id") %>">
+<center><h3>Vasi podaci</h3></center><br><br>
+<center>Name :<input type="text" name="name" value="<%=resultSet.getString("name") %>"><br><br></center>
+<center>Email :<input type="text" name="email" value="<%=resultSet.getString("email") %>"><br><br></center>
 
-    <h1><center>Dodaj novu salu</center></h1>
-        <div style="width: 900px; margin-left: auto; margin-right: auto">
-            <form action="JSP/ManagerAddNew.jsp" method="post">
-                <center>Naziv:</center><br>
-                <center><input type="text" name="naziv" style="width: 200px"></center><br>
-                <center>Broj redova:</center><br>
-                <center><input type="text" name="brojRedova" style="width: 200px"></center><br>
-                <center>Broj sedista:</center><br>
-                <center><input type="text" name="brojSedista" style="width: 200px"></center><br>
-                <center> <input type="submit" value="Submit"></center>
-            </form>
-            <!--Complete Interface Addnew.-->
+ <!-- where_togo_area_start  -->
+    <div class="where_togo_area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-9">
+                    <div class="search_wrap">
+                            <div class="input_field">
+                                <center>Izabeite kurs:</center>
+<center><select name="club">
+<option value="premium">PREMIUM</option>
+<option value="family">FAMILY</option>
+<option value="jumbo">JUMBO</option>
+    </select></center>
+                            </div>
+                           
+                                
+                         <div class="search_btn">
+<center><input type="submit" class="boxed-btn4 " value="POTVRDI"></center>
+ </div>   
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <!-- where_togo_area_end  -->    
+<br><br><br><br><br><br>
+
+<% 
+}
+
+} catch (Exception e) {
+e.printStackTrace();
+}
+%>
     <!-- link that opens popup -->
 <!--     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -152,5 +217,6 @@ and open the template in the editor.
          }
         });
     </script>
-    </body>
+</form>
+</body>
 </html>

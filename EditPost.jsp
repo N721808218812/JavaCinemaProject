@@ -1,14 +1,17 @@
+<%-- 
+    Document   : EditPost
+    Created on : Aug 8, 2015, 11:08:34 PM
+    Author     : Thang
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-    <meta charset="utf-8">
+        <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Add Sala</title>
+    <title>Edit svih sala</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -32,9 +35,9 @@ and open the template in the editor.
 
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-</head>
+    </head>
     <body>
-        <!-- header-start -->
+            <!-- header-start -->
     <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area">
@@ -53,12 +56,21 @@ and open the template in the editor.
                                     <nav>
                                         <ul id="navigation">
                                             <li><a class="active" href="index.jsp">Pocetna</a></li>
+                                            <li><a href="about.html">O nama</a></li>
+                                            <li><a class="" href="travel_destination.html">Repertoar</a></l/li>
+                                            <li><a href="#">Bioskop <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                        <li><a href="movies.jsp">Filmovi</a></li>
+                                                        <li><a href="elements.html">Postanite clan kluba</a></li>
+                                                </ul>
+                                            </li>
                                             <li><a href="AddNew.html">Sale<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="AddNew.html">Unesite novu salu</a></li>
                                                     <li><a href="AllPost">Pregled svih sala</a></li>
                                                 </ul>
                                             </li>
+                                            <li><a href="contact.html">Kontakt</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -92,21 +104,24 @@ and open the template in the editor.
         </div>
     </header>
     <!-- header-end -->
-
-    <h1><center>Dodaj novu salu</center></h1>
+        <center><h1>Edit</h1></center>
+        <center><img src="images/edit.jpg" align="center"></center><br>
         <div style="width: 900px; margin-left: auto; margin-right: auto">
-            <form action="JSP/ManagerAddNew.jsp" method="post">
-                <center>Naziv:</center><br>
-                <center><input type="text" name="naziv" style="width: 200px"></center><br>
-                <center>Broj redova:</center><br>
-                <center><input type="text" name="brojRedova" style="width: 200px"></center><br>
-                <center>Broj sedista:</center><br>
-                <center><input type="text" name="brojSedista" style="width: 200px"></center><br>
-                <center> <input type="submit" value="Submit"></center>
-            </form>
-            <!--Complete Interface Addnew.-->
+            <c:forEach items="${getNewsById}" var="p">
+                <form action="JSP/ManagerEditPost.jsp" method="post">
+                    <input type="hidden" name="id" value="${p.id}">
+                    <center>Naziv:</center><br>
+                    <center><input type="text" value="${p.naziv}" name="naziv" style="width: 200px"></center><br>
+                    <center>Broj Redova:</center><br>
+                    <center><input type="text" value="${p.brojRedova}" name="brojRedova" style="width: 200px"></center><br>
+                    <center>Broj Sedista:</center><br>
+                    <center><input type="text" value="${p.brojSedista}" name="brojSedista" style="width: 200px"></center><br>
+                    <center><input type="submit" value="Submit"></center>
+                </form>
+            </c:forEach>
+
         </div>
-    <!-- link that opens popup -->
+            <!-- link that opens popup -->
 <!--     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
