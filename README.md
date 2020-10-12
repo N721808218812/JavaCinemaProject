@@ -16,4 +16,4 @@ Treći pristup alpikaciji ima menadžer. Dostupne aktivnosti:
 • Pregled svih korisnika aplikacije
 • Brisanje korisnika
  
- Koriščene tehnologije za izradu projekta : JSP/Servlet, Java Beans , EL.
+ Korišćene tehnologije za izradu projekta : JSP/Servlet, Java Beans , EL.
