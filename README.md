@@ -1,5 +1,5 @@
 Aplikacija je namenjena upotrebama bioskopskih akitvnosti koje se mogu izvrsiti od strane klijenta, menadzera I krajnjeg administratora. Prilikom samog kreiranja korisnickog naloga, krajnji korisnik ima sledeće aktivnosti: 
-• Pregled cenovnika hrane i pica
+• Pregled cenovnika hrane i pića
 • Učlanjenje u klub
 • Pregled repertoara
 • Pregled detalja dostupnih filmova
