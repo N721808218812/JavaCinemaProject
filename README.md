@@ -1,6 +1,6 @@
 Aplikacija je namenjena upotrebama bioskopskih akitvnosti koje se mogu izvrsiti od strane klijenta, menadzera I krajnjeg administratora. Prilikom samog kreiranja korisnickog naloga, krajnji korisnik ima sledeće aktivnosti: 
 • Pregled cenovnika hrane i pića
-• Učlanjenje u klub
+• Učlanjenje u klub		 
 • Pregled repertoara
 • Pregled detalja dostupnih filmova
 • Rezervacija karte
@@ -11,7 +11,7 @@ Samoj aplikaciji može pristupiti i sam admin uy unos odgovarajućeg email-a i j
 • Brisanje postojećih sala
 • Ažuriranje postojećih sala 
 
-Treći pristup alpikaciji ima menadžer. Dostupne aktivnosti:
+Treći pristup aplikaciji ima menadžer. Dostupne aktivnosti:
 • Pregled svih menadžera
 • Pregled svih korisnika aplikacije
 • Brisanje korisnika
